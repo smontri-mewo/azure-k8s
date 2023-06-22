@@ -90,12 +90,12 @@ resource "azurerm_network_interface" "mewo-worker1-nic" {
   }
 }
 
-output "public_ip" {
-  value = azurerm_public_ip.mewo-master-ip.ip_address
+output "worker1_public_ip" {
+  value = azurerm_public_ip.mewo-worker2-ip.ip_address
 }
 
-output "vm_name" {
-  value = azurerm_virtual_machine.mewo-master.name
+output "worker1_name" {
+  value = azurerm_virtual_machine.mewo-worker2.name
 }
 
 ########################################################################
@@ -190,10 +190,10 @@ resource "azurerm_network_interface" "mewo-worker2-nic" {
   }
 }
 
-output "public_ip" {
-  value = azurerm_public_ip.mewo-master-ip.ip_address
+output "worker2_public_ip" {
+  value = azurerm_public_ip.mewo-worker2-ip.ip_address
 }
 
-output "vm_name" {
-  value = azurerm_virtual_machine.mewo-master.name
+output "worker2_name" {
+  value = azurerm_virtual_machine.mewo-worker2.name
 }
