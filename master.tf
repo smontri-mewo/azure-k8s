@@ -3,7 +3,7 @@ resource "azurerm_virtual_machine" "mewo-master" {
   name                  = "${var.prefix}-master"
   location              = azurerm_resource_group.mewo-rg.location
   resource_group_name   = azurerm_resource_group.mewo-rg.name
-  network_interface_ids = [azurerm_network_interface.mewo-nic.id]
+  network_interface_ids = [azurerm_network_interface.mewo-master-nic.id]
   vm_size               = var.vm_size
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
