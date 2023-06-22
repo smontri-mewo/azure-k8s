@@ -41,7 +41,7 @@ resource "azurerm_virtual_machine" "mewo-worker1" {
     ssh_keys {
       path = "/home/mewo-user/.ssh/authorized_keys"
       # votre clé SSH publique
-      key_data = var.ssh_key
+      key_data = "${var.ssh_key}"
     }
   }
 
@@ -141,7 +141,7 @@ resource "azurerm_virtual_machine" "mewo-worker2" {
     ssh_keys {
       path = "/home/mewo-user/.ssh/authorized_keys"
       # votre clé SSH publique
-      key_data = var.ssh_key
+      key_data = "${var.ssh_key}"
     }
   }
 
