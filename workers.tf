@@ -18,7 +18,7 @@ resource "azurerm_virtual_machine" "mewo-worker1" {
 
   storage_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
+    offer     = "0001-com-ubuntu-server-jammy"
     sku       = "22_04-lts-gen2"
     version   = "latest"
   }
@@ -117,7 +117,7 @@ resource "azurerm_virtual_machine" "mewo-worker2" {
 
   storage_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
+    offer     = "0001-com-ubuntu-server-jammy"
     sku       = "22_04-lts-gen2"
     version   = "latest"
   }
