@@ -1,7 +1,7 @@
 # Resource Group
 resource "azurerm_resource_group" "mewo-rg" {
   name     = "${var.prefix}-rg"
-  location = "North Europe"
+  location = "East US 2"
 
   tags = {
     environment = "${var.environment}"
