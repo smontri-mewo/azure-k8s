@@ -26,7 +26,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
 
 # Associate Network Security group for master with Subnet
 resource "azurerm_subnet_network_security_group_association" "nsg-master-subnet" {
-  subnet_id                 = azurerm_subnet.mewo-subnet.id
+  subnet_id                 = azurerm_subnet.mewo-subnet1.id
   network_security_group_id = azurerm_network_security_group.mewo-master-nsg.id
 }
 
@@ -58,6 +58,6 @@ resource "azurerm_network_security_group" "mewo-worker-nsg" {
 
 # Associate Network Security group for master with Subnet
 resource "azurerm_subnet_network_security_group_association" "nsg-worker-subnet" {
-  subnet_id                 = azurerm_subnet.mewo-subnet.id
+  subnet_id                 = azurerm_subnet.mewo-subnet2.id
   network_security_group_id = azurerm_network_security_group.mewo-worker-nsg.id
 }
