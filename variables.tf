@@ -3,6 +3,10 @@ variable "prefix" {
   default = "smontri"
 }
 
+variable "location" {
+  default "North Europe"
+}
+
 variable "environment" {
   default = "demo"
 }
