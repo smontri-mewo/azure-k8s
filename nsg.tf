@@ -20,7 +20,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
   # Allow incoming connection on port 6443 for Kube API server
   security_rule {
     name                       = "KubeAPI"
-    priority                   = 1001
+    priority                   = 1002
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -33,7 +33,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
   # Allow incoming connection for etcd API
   security_rule {
     name                       = "etcd"
-    priority                   = 1001
+    priority                   = 1003
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -46,7 +46,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
   # Allow incoming connection for Kubelet API
   security_rule {
     name                       = "kubelet"
-    priority                   = 1001
+    priority                   = 1004
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -59,7 +59,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
   # Allow incoming connection for kube-scheduler
   security_rule {
     name                       = "scheduler"
-    priority                   = 1001
+    priority                   = 1005
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -72,7 +72,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
   # Allow incoming connection for kube-controller-manager
   security_rule {
     name                       = "controller"
-    priority                   = 1001
+    priority                   = 1006
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -118,7 +118,7 @@ resource "azurerm_network_security_group" "mewo-worker-nsg" {
   # Allow incoming connection for Kubelet API
   security_rule {
     name                       = "etcd"
-    priority                   = 1001
+    priority                   = 1002
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
@@ -131,7 +131,7 @@ resource "azurerm_network_security_group" "mewo-worker-nsg" {
   # Allow incoming connection on port 30000-32767 for Niodeport Services
   security_rule {
     name                       = "nodeport"
-    priority                   = 1001
+    priority                   = 1003
     direction                  = "Inbound"
     access                     = "Allow"
     protocol                   = "Tcp"
