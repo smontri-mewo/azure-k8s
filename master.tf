@@ -72,7 +72,7 @@ resource "azurerm_network_interface" "mewo-master-nic" {
 
   ip_configuration {
     name                          = "${var.prefix}-master-ip-config"
-    subnet_id                     = azurerm_subnet.mewo-subnet1.id
+    subnet_id                     = azurerm_subnet.mewo-subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mewo-master-ip.id
   }
@@ -85,6 +85,11 @@ resource "azurerm_network_interface" "mewo-master-nic" {
   }
 }
 
+resource "azurerm_network_interface_security_group_association" "master" {
+  # network_interface_id      = azurerm_network_interface.netif_public[count.index].id
+  network_interface_id      = azurerm_network_interface.mewo-master-nic.id
+  network_security_group_id = azurerm_network_security_group.mewo-master-nsg.id
+}
 
 output "public_ip" {
   value = azurerm_public_ip.mewo-master-ip.ip_address

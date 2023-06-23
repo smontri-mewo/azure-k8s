@@ -76,7 +76,7 @@ resource "azurerm_network_interface" "mewo-worker1-nic" {
 
   ip_configuration {
     name                          = "${var.prefix}-worker1-ip-config"
-    subnet_id                     = azurerm_subnet.mewo-subnet2.id
+    subnet_id                     = azurerm_subnet.mewo-subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mewo-worker1-ip.id
   }
@@ -88,6 +88,13 @@ resource "azurerm_network_interface" "mewo-worker1-nic" {
     project     = "${var.project}"
   }
 }
+
+resource "azurerm_network_interface_security_group_association" "worker1" {
+  # network_interface_id      = azurerm_network_interface.netif_public[count.index].id
+  network_interface_id      = azurerm_network_interface.mewo-worker1-nic.id
+  network_security_group_id = azurerm_network_security_group.mewo-worker-nsg.id
+}
+
 
 output "worker1_public_ip" {
   value = azurerm_public_ip.mewo-worker2-ip.ip_address
@@ -175,7 +182,7 @@ resource "azurerm_network_interface" "mewo-worker2-nic" {
 
   ip_configuration {
     name                          = "${var.prefix}-worker2-ip-config"
-    subnet_id                     = azurerm_subnet.mewo-subnet2.id
+    subnet_id                     = azurerm_subnet.mewo-subnet.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mewo-worker2-ip.id
   }
@@ -187,6 +194,13 @@ resource "azurerm_network_interface" "mewo-worker2-nic" {
     project     = "${var.project}"
   }
 }
+
+resource "azurerm_network_interface_security_group_association" "worker2" {
+  # network_interface_id      = azurerm_network_interface.netif_public[count.index].id
+  network_interface_id      = azurerm_network_interface.mewo-worker2-nic.id
+  network_security_group_id = azurerm_network_security_group.mewo-worker-nsg.id
+}
+
 
 output "worker2_public_ip" {
   value = azurerm_public_ip.mewo-worker2-ip.ip_address
