@@ -109,7 +109,7 @@ output "worker1_name" {
 ########################################################################
 
 # Virtual Machine
-resource "azurerm_virtual_machine" "mewo-worker2" {
+/* resource "azurerm_virtual_machine" "mewo-worker2" {
   name                  = "${var.prefix}-worker2"
   location              = azurerm_resource_group.mewo-rg.location
   resource_group_name   = azurerm_resource_group.mewo-rg.name
@@ -209,3 +209,4 @@ output "worker2_public_ip" {
 output "worker2_name" {
   value = azurerm_virtual_machine.mewo-worker2.name
 }
+ */
