@@ -76,7 +76,7 @@ resource "azurerm_network_interface" "mewo-worker1-nic" {
 
   ip_configuration {
     name                          = "${var.prefix}-worker1-ip-config"
-    subnet_id                     = azurerm_subnet.mewo-subnet.id
+    subnet_id                     = azurerm_subnet.mewo-subnet2.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mewo-worker1-ip.id
   }
@@ -175,7 +175,7 @@ resource "azurerm_network_interface" "mewo-worker2-nic" {
 
   ip_configuration {
     name                          = "${var.prefix}-worker2-ip-config"
-    subnet_id                     = azurerm_subnet.mewo-subnet.id
+    subnet_id                     = azurerm_subnet.mewo-subnet2.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mewo-worker2-ip.id
   }

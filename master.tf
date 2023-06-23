@@ -72,7 +72,7 @@ resource "azurerm_network_interface" "mewo-master-nic" {
 
   ip_configuration {
     name                          = "${var.prefix}-master-ip-config"
-    subnet_id                     = azurerm_subnet.mewo-subnet.id
+    subnet_id                     = azurerm_subnet.mewo-subnet1.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.mewo-master-ip.id
   }
