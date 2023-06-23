@@ -20,5 +20,5 @@ variable "ssh_key" {
 }
 
 variable "vm_size" {
-  default = "Standard_D2s_v3"
+  default = "Standard_B2s"
 }
