@@ -91,10 +91,10 @@ resource "azurerm_network_interface_security_group_association" "master" {
   network_security_group_id = azurerm_network_security_group.mewo-master-nsg.id
 }
 
-output "public_ip" {
-  value = azurerm_public_ip.mewo-master-ip.ip_address
+output "master_name" {
+  value = azurerm_virtual_machine.mewo-master.name
 }
 
-output "vm_name" {
-  value = azurerm_virtual_machine.mewo-master.name
+output "master_public_ip" {
+  value = azurerm_public_ip.mewo-master-ip.ip_address
 }
