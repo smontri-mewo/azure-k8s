@@ -16,6 +16,72 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+
+  # Allow incoming connection on port 6443 for Kube API server
+  security_rule {
+    name                       = "KubeAPI"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "6443"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  # Allow incoming connection for etcd API
+  security_rule {
+    name                       = "etcd"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = ""
+    destination_port_range     = "2379-2380"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  # Allow incoming connection for Kubelet API
+  security_rule {
+    name                       = "etcd"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = ""
+    destination_port_range     = "10250"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  # Allow incoming connection for kube-scheduler
+  security_rule {
+    name                       = "etcd"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = ""
+    destination_port_range     = "10259"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  # Allow incoming connection for kube-controller-manager
+  security_rule {
+    name                       = "etcd"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = ""
+    destination_port_range     = "10257"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
   tags = {
     environment = "${var.environment}"
     owner       = "${var.prefix}"
@@ -48,6 +114,33 @@ resource "azurerm_network_security_group" "mewo-worker-nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+
+  # Allow incoming connection for Kubelet API
+  security_rule {
+    name                       = "etcd"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = ""
+    destination_port_range     = "10250"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
+  # Allow incoming connection on port 30000-32767 for Niodeport Services
+  security_rule {
+    name                       = "SSH"
+    priority                   = 1001
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "30000-32767"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
   tags = {
     environment = "${var.environment}"
     owner       = "${var.prefix}"
