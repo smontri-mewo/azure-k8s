@@ -97,11 +97,11 @@ resource "azurerm_network_interface_security_group_association" "worker1" {
 
 
 output "worker1_public_ip" {
-  value = azurerm_public_ip.mewo-worker2-ip.ip_address
+  value = azurerm_public_ip.mewo-worker1-ip.ip_address
 }
 
 output "worker1_name" {
-  value = azurerm_virtual_machine.mewo-worker2.name
+  value = azurerm_virtual_machine.mewo-worker1.name
 }
 
 ########################################################################
