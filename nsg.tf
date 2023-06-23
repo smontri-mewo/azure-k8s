@@ -45,7 +45,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
 
   # Allow incoming connection for Kubelet API
   security_rule {
-    name                       = "etcd"
+    name                       = "kubelet"
     priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
@@ -58,7 +58,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
 
   # Allow incoming connection for kube-scheduler
   security_rule {
-    name                       = "etcd"
+    name                       = "scheduler"
     priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
@@ -71,7 +71,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
 
   # Allow incoming connection for kube-controller-manager
   security_rule {
-    name                       = "etcd"
+    name                       = "controller"
     priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
@@ -130,7 +130,7 @@ resource "azurerm_network_security_group" "mewo-worker-nsg" {
 
   # Allow incoming connection on port 30000-32767 for Niodeport Services
   security_rule {
-    name                       = "SSH"
+    name                       = "nodeport"
     priority                   = 1001
     direction                  = "Inbound"
     access                     = "Allow"
