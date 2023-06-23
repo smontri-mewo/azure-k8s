@@ -132,7 +132,6 @@ resource "azurerm_virtual_machine" "mewo-worker2" {
   os_profile {
     computer_name  = "mewo-worker2"
     admin_username = "mewo-user"
-    # admin_password = "Password1234!"
   }
 
   os_profile_linux_config {
