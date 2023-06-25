@@ -4,7 +4,7 @@ variable "prefix" {
 }
 
 variable "location" {
-  default = "North Europe"
+  default = "France Central"
 }
 
 variable "environment" {
