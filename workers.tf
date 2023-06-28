@@ -92,7 +92,7 @@ resource "azurerm_network_interface" "mewo-worker1-nic" {
 resource "azurerm_network_interface_security_group_association" "worker1" {
   # network_interface_id      = azurerm_network_interface.netif_public[count.index].id
   network_interface_id      = azurerm_network_interface.mewo-worker1-nic.id
-  network_security_group_id = azurerm_network_security_group.mewo-worker-nsg.id
+  network_security_group_id = azurerm_network_security_group.mewo-master-nsg.id
 }
 
 

@@ -82,6 +82,19 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
     destination_address_prefix = "*"
   }
 
+  # Allow incoming connection on port 30000-32767 for Niodeport Services
+  security_rule {
+    name                       = "nodeport"
+    priority                   = 1007
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "30000-32767"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
+
   tags = {
     environment = "${var.environment}"
     owner       = "${var.prefix}"
@@ -97,7 +110,7 @@ resource "azurerm_network_security_group" "mewo-master-nsg" {
 } */
 
 # Network Security Group for workers and rule
-resource "azurerm_network_security_group" "mewo-worker-nsg" {
+/*resource "azurerm_network_security_group" "mewo-worker-nsg" {
   name                = "${var.prefix}-worker-nsg"
   location            = azurerm_resource_group.mewo-rg.location
   resource_group_name = azurerm_resource_group.mewo-rg.name
@@ -150,7 +163,7 @@ resource "azurerm_network_security_group" "mewo-worker-nsg" {
 }
 
 # Associate Network Security group for master with Subnet
-/* resource "azurerm_subnet_network_security_group_association" "nsg-worker-subnet" {
+ resource "azurerm_subnet_network_security_group_association" "nsg-worker-subnet" {
   subnet_id                 = azurerm_subnet.mewo-subnet2.id
   network_security_group_id = azurerm_network_security_group.mewo-worker-nsg.id
 } */
