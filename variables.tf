@@ -1,6 +1,6 @@
 variable "prefix" {
   # A personnaliser avec votre nom
-  default = "smontri"
+  default = "rke"
 }
 
 variable "location" {
